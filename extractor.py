@@ -21,7 +21,7 @@ def main() -> None:
 
     pdf = client.pdf_new(
         file_path=str(input_file_path),
-        convert_to_md=True,
+        # convert_to_md=True,
         convert_to_tex_zip=True,
     )
 
@@ -29,14 +29,15 @@ def main() -> None:
     if not completed:
         raise TimeoutError("Mathpix conversion did not complete within 300 seconds")
 
-    md_path = output_dir / f"{output_stem}.md"
-    tex_zip_path = output_dir / f"{output_stem}.tex.zip"
+    # md_path = output_dir / f"{output_stem}.md"
+    tex_zip_path = output_dir / f"{output_stem}.zip"
 
-    saved_md = pdf.to_md_file(path=str(md_path))
+    # saved_md = pdf.to_md_file(path=str(md_path))
     saved_tex_zip = pdf.to_tex_zip_file(path=str(tex_zip_path))
 
-    print(f"Saved markdown: {saved_md}")
+    # print(f"Saved markdown: {saved_md}")
     print(f"Saved TeX zip: {saved_tex_zip}")
+    return tex_zip_path
 
 
 if __name__ == "__main__":
